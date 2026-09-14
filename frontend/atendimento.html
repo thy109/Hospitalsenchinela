@@ -1,17 +1,35 @@
-```html
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Atendimento | Hospital</title>
 
+
+    <!-- =========================================
+         FONTES
+    ========================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
     <style>
-        /* ========================================
-           CONFIGURAÇÕES GERAIS
-        ======================================== */
+
+        /* =========================================
+           RESET
+        ========================================== */
 
         * {
             margin: 0;
@@ -19,305 +37,456 @@
             box-sizing: border-box;
         }
 
+
+        /* =========================================
+           PÁGINA
+        ========================================== */
+
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: #f5f7f9;
-            color: #263238;
+
+            font-family: "Montserrat", sans-serif;
+
+            background: #E8EEF2;
+
+            color: #263746;
+
             min-height: 100vh;
 
             display: flex;
-            align-items: center;
+
             justify-content: center;
+
+            align-items: center;
 
             padding: 30px;
         }
 
-        /* ========================================
-           CONTAINER PRINCIPAL
-        ======================================== */
+
+        /* =========================================
+           CARD PRINCIPAL
+        ========================================== */
 
         .container {
+
             width: 100%;
-            max-width: 500px;
 
-            background: #ffffff;
+            max-width: 510px;
 
-            padding: 42px;
+            background: #F8FAFB;
 
-            border: 1px solid #e1e6ea;
-            border-radius: 18px;
+            padding: 44px;
 
-            box-shadow: 0 15px 40px rgba(7, 26, 43, 0.08);
+            border-radius: 20px;
+
+            border: 1px solid #D8E1E7;
+
+            box-shadow:
+                0 18px 45px rgba(11, 34, 57, 0.12);
         }
 
-        /* ========================================
-           CABEÇALHO
-        ======================================== */
+
+        /* =========================================
+           IDENTIDADE DO HOSPITAL
+        ========================================== */
 
         .hospital-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
 
-            margin-bottom: 35px;
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            margin-bottom: 38px;
         }
+
 
         .logo-icon {
-            width: 42px;
-            height: 42px;
 
-            background: #102a43;
-            color: white;
+            width: 44px;
 
-            border-radius: 10px;
+            height: 44px;
+
+            background: #0B2239;
+
+            color: #FFFFFF;
+
+            border-radius: 11px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
+            font-family: "Montserrat", sans-serif;
+
             font-size: 22px;
-            font-weight: bold;
+
+            font-weight: 500;
         }
 
+
         .hospital-name {
-            color: #071a2b;
-            font-size: 16px;
-            font-weight: 600;
+
+            color: #0B2239;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 23px;
+
+            font-weight: 700;
+
             letter-spacing: 0.3px;
         }
 
+
         .hospital-subtitle {
-            color: #7b8790;
-            font-size: 12px;
-            margin-top: 2px;
+
+            color: #718493;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 0.4px;
+
+            margin-top: 1px;
         }
 
-        /* ========================================
+
+        /* =========================================
            TÍTULO
-        ======================================== */
+        ========================================== */
 
         .title-area {
-            margin-bottom: 28px;
+
+            margin-bottom: 30px;
         }
 
+
         .title-area h1 {
-            color: #071a2b;
-            font-size: 28px;
+
+            color: #0B2239;
+
+            font-family: "Cormorant Garamond", serif;
+
+            font-size: 42px;
+
             font-weight: 600;
+
+            line-height: 1;
+
+            margin-bottom: 10px;
+        }
+
+
+        .title-area p {
+
+            color: #687B88;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            max-width: 420px;
+        }
+
+
+        /* =========================================
+           CAMPOS
+        ========================================== */
+
+        .campo {
+
+            margin-bottom: 19px;
+        }
+
+
+        .campo label {
+
+            display: block;
+
+            color: #304555;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.2px;
+
             margin-bottom: 8px;
         }
 
-        .title-area p {
-            color: #657786;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        /* ========================================
-           FORMULÁRIO
-        ======================================== */
-
-        .campo {
-            margin-bottom: 18px;
-        }
-
-        .campo label {
-            display: block;
-
-            color: #263238;
-
-            font-size: 13px;
-            font-weight: 600;
-
-            margin-bottom: 7px;
-        }
 
         input,
         select {
+
             width: 100%;
-            height: 50px;
+
+            height: 51px;
 
             padding: 0 15px;
 
-            border: 1px solid #d9e0e5;
+            border: 1px solid #D4DEE5;
+
             border-radius: 9px;
 
-            background: #fbfcfd;
+            background: #EEF2F4;
 
-            color: #263238;
-            font-size: 15px;
+            color: #263746;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 12px;
 
             outline: none;
 
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
+
         input::placeholder {
-            color: #8a969e;
+
+            color: #82919B;
         }
+
+
+        /* =========================================
+           FOCO
+        ========================================== */
 
         input:focus,
         select:focus {
-            border-color: #102a43;
 
-            background: #ffffff;
+            background: #FFFFFF;
 
-            box-shadow: 0 0 0 3px rgba(16, 42, 67, 0.08);
+            border-color: #0B2239;
+
+            box-shadow:
+                0 0 0 3px rgba(11, 34, 57, 0.07);
         }
 
+
         select {
+
             cursor: pointer;
         }
 
-        /* ========================================
-           UPLOAD DA FOTO
-        ======================================== */
+
+        /* =========================================
+           UPLOAD
+        ========================================== */
 
         .upload-area {
-            border: 1px dashed #cbd5dc;
-            border-radius: 10px;
 
-            background: #fafbfc;
+            background: #EEF2F4;
 
-            padding: 15px;
+            border: 1px dashed #B8C6CF;
 
-            transition: 0.2s ease;
+            border-radius: 9px;
+
+            padding: 13px;
+
+            transition: 0.25s ease;
         }
+
 
         .upload-area:hover {
-            border-color: #102a43;
-            background: #f5f8fa;
+
+            background: #E9EFF2;
+
+            border-color: #0B2239;
         }
 
+
         input[type="file"] {
+
             height: auto;
-            padding: 5px;
+
+            padding: 3px;
 
             border: none;
+
             background: transparent;
 
             cursor: pointer;
         }
 
+
         input[type="file"]:focus {
+
             box-shadow: none;
         }
 
-        /* ========================================
+
+        /* =========================================
            BOTÃO
-        ======================================== */
+        ========================================== */
 
         button {
+
             width: 100%;
-            height: 52px;
+
+            height: 53px;
 
             margin-top: 8px;
 
             border: none;
+
             border-radius: 9px;
 
-            background: #102a43;
-            color: #ffffff;
+            background: #0B2239;
 
-            font-size: 15px;
+            color: #FFFFFF;
+
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 12px;
+
             font-weight: 600;
+
+            letter-spacing: 0.2px;
 
             cursor: pointer;
 
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
+
         button:hover {
-            background: #071a2b;
+
+            background: #071A2B;
 
             transform: translateY(-1px);
 
-            box-shadow: 0 8px 20px rgba(7, 26, 43, 0.18);
+            box-shadow:
+                0 9px 22px rgba(11, 34, 57, 0.20);
         }
 
+
         button:active {
+
             transform: translateY(0);
         }
 
-        /* ========================================
-           MENSAGEM DE SEGURANÇA
-        ======================================== */
+
+        /* =========================================
+           SEGURANÇA
+        ========================================== */
 
         .seguranca {
-            display: flex;
-            align-items: center;
-            gap: 8px;
 
-            margin-top: 22px;
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-top: 23px;
 
             padding-top: 18px;
 
-            border-top: 1px solid #edf0f2;
+            border-top: 1px solid #DDE5EA;
 
-            color: #7b8790;
+            color: #778995;
 
-            font-size: 11px;
-            line-height: 1.4;
+            font-family: "Montserrat", sans-serif;
+
+            font-size: 9px;
+
+            line-height: 1.5;
         }
+
 
         .seguranca-icon {
-            color: #102a43;
-            font-size: 14px;
+
+            color: #0B2239;
+
+            font-size: 13px;
         }
 
-        /* ========================================
+
+        /* =========================================
            RESPONSIVIDADE
-        ======================================== */
+        ========================================== */
 
         @media (max-width: 600px) {
 
             body {
+
                 padding: 18px;
             }
 
+
             .container {
+
                 padding: 30px 24px;
-                border-radius: 15px;
+
+                border-radius: 16px;
             }
 
+
             .title-area h1 {
-                font-size: 24px;
+
+                font-size: 36px;
             }
+
         }
+
     </style>
+
 </head>
 
 
 <body>
 
+
+    <!-- =========================================
+         ATENDIMENTO
+    ========================================== -->
+
     <main class="container">
 
-        <!-- IDENTIDADE DO HOSPITAL -->
+
+        <!-- IDENTIDADE -->
+
         <div class="hospital-logo">
 
             <div class="logo-icon">
                 +
             </div>
 
+
             <div>
+
                 <div class="hospital-name">
                     Hospital
                 </div>
 
+
                 <div class="hospital-subtitle">
-                    Cuidado, confiança e acolhimento
+                    CUIDADO • CONFIANÇA • ACOLHIMENTO
                 </div>
+
             </div>
 
         </div>
 
 
+
         <!-- TÍTULO -->
+
         <div class="title-area">
 
             <h1>
                 Atendimento
             </h1>
+
 
             <p>
                 Preencha os dados abaixo para cadastrar o paciente
@@ -327,15 +496,20 @@
         </div>
 
 
+
         <!-- FORMULÁRIO -->
+
         <form id="formAtendimento">
 
+
             <!-- NOME -->
+
             <div class="campo">
 
                 <label for="nome">
-                    Nome completo
+                    NOME COMPLETO
                 </label>
+
 
                 <input
                     type="text"
@@ -347,12 +521,15 @@
             </div>
 
 
+
             <!-- CPF -->
+
             <div class="campo">
 
                 <label for="cpf">
                     CPF
                 </label>
+
 
                 <input
                     type="text"
@@ -365,12 +542,15 @@
             </div>
 
 
-            <!-- TIPO DE ATENDIMENTO -->
+
+            <!-- TIPO -->
+
             <div class="campo">
 
                 <label for="tipo">
-                    Tipo de atendimento
+                    TIPO DE ATENDIMENTO
                 </label>
+
 
                 <select id="tipo" required>
 
@@ -378,9 +558,11 @@
                         Selecione uma opção
                     </option>
 
+
                     <option value="Convenio">
                         Convênio
                     </option>
+
 
                     <option value="Particular">
                         Particular
@@ -391,12 +573,15 @@
             </div>
 
 
+
             <!-- FOTO -->
+
             <div class="campo">
 
                 <label for="foto">
-                    Foto do paciente
+                    FOTO DO PACIENTE
                 </label>
+
 
                 <div class="upload-area">
 
@@ -411,20 +596,26 @@
             </div>
 
 
+
             <!-- BOTÃO -->
+
             <button type="submit">
-                Cadastrar paciente
+                CADASTRAR PACIENTE
             </button>
+
 
         </form>
 
 
-        <!-- AVISO -->
+
+        <!-- SEGURANÇA -->
+
         <div class="seguranca">
 
             <span class="seguranca-icon">
                 🔒
             </span>
+
 
             <span>
                 Os dados informados são utilizados exclusivamente
@@ -433,70 +624,92 @@
 
         </div>
 
+
     </main>
 
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
     <script>
 
-        /* ========================================
-           FORMULÁRIO DE ATENDIMENTO
-        ======================================== */
 
-        const form = document.getElementById("formAtendimento");
+        /* =========================================
+           FORMULÁRIO
+        ========================================== */
+
+        const form =
+            document.getElementById("formAtendimento");
+
 
         form.addEventListener("submit", function(event) {
 
             event.preventDefault();
 
 
-            /* Pegando os valores dos campos */
-
-            const nome = document.getElementById("nome").value;
-
-            const cpf = document.getElementById("cpf").value;
-
-            const tipo = document.getElementById("tipo").value;
+            const nome =
+                document.getElementById("nome").value;
 
 
-            /* Enviando os dados para o servidor */
+            const cpf =
+                document.getElementById("cpf").value;
 
-            fetch("http://localhost:3000/atendimento", {
 
-                method: "POST",
+            const tipo =
+                document.getElementById("tipo").value;
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
 
-                body: JSON.stringify({
+            fetch(
+                "http://localhost:3000/atendimento",
+                {
 
-                    nome: nome,
+                    method: "POST",
 
-                    cpf: cpf,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
 
-                    tipo: tipo
+                    body: JSON.stringify({
 
-                })
+                        nome: nome,
 
-            })
+                        cpf: cpf,
+
+                        tipo: tipo
+
+                    })
+
+                }
+            )
+
 
             .then(response => {
 
                 if (!response.ok) {
-                    throw new Error("Erro ao cadastrar paciente.");
+
+                    throw new Error(
+                        "Erro ao cadastrar paciente."
+                    );
+
                 }
 
                 return response.json();
 
             })
 
+
             .then(data => {
 
-                alert("Paciente enviado para triagem!");
+                alert(
+                    "Paciente enviado para triagem!"
+                );
 
                 form.reset();
 
             })
+
 
             .catch(error => {
 
@@ -511,32 +724,39 @@
         });
 
 
-        /* ========================================
+
+        /* =========================================
            MÁSCARA DE CPF
-        ======================================== */
+        ========================================== */
 
         document
             .getElementById("cpf")
             .addEventListener("input", function(event) {
 
-                let valor = event.target.value
+
+                let valor =
+                    event.target.value
                     .replace(/\D/g, "")
                     .slice(0, 11);
 
-                valor = valor.replace(
-                    /(\d{3})(\d)/,
-                    "$1.$2"
-                );
 
                 valor = valor.replace(
                     /(\d{3})(\d)/,
                     "$1.$2"
                 );
+
+
+                valor = valor.replace(
+                    /(\d{3})(\d)/,
+                    "$1.$2"
+                );
+
 
                 valor = valor.replace(
                     /(\d{3})(\d{1,2})$/,
                     "$1-$2"
                 );
+
 
                 event.target.value = valor;
 
@@ -544,7 +764,8 @@
 
     </script>
 
+
 </body>
 
 </html>
-```
+
