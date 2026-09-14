@@ -1,0 +1,1922 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+
+    /* =========================================================
+       BOTÕES ORIGINAIS
+       ========================================================= */
+
+    .btn-tv {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .btn-tv:hover {
+      background: #1e7e34;
+    }
+
+    .btn-abrir-tv {
+      background: #17a2b8;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .btn-abrir-tv:hover {
+      background: #117a8b;
+    }
+
+    .consultorio-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      background: #f0f4ff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border: 1px solid #d0d8f0;
+    }
+
+    .consultorio-input label {
+      font-weight: bold;
+    }
+
+    .consultorio-input input {
+      width: 60px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+
+    /* =========================================================
+       CONTROLE DAS TELAS
+       ========================================================= */
+
+    #tela-painel {
+      display: block;
+    }
+
+    #tela-consulta {
+      display: none;
+    }
+
+
+    /* =========================================================
+       CABEÇALHO DA CONSULTA
+       ========================================================= */
+
+    .cabecalho-consulta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cabecalho-consulta h2 {
+      margin: 0;
+    }
+
+    .btn-voltar {
+      background: #6c757d;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-voltar:hover {
+      background: #545b62;
+    }
+
+
+    /* =========================================================
+       IDENTIFICAÇÃO DO PACIENTE
+       ========================================================= */
+
+    .paciente-header {
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .paciente-header h3 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+    }
+
+    .paciente-header p {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+
+    /* =========================================================
+       CARDS DOS DADOS DA TRIAGEM
+       ========================================================= */
+
+    .dados-triagem {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+      );
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .dado-triagem {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .dado-triagem strong {
+      display: block;
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .dado-triagem span {
+      font-size: 15px;
+      color: #222;
+    }
+
+    .alerta-alergia {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      color: #856404;
+      padding: 12px;
+      border-radius: 7px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+
+    /* =========================================================
+       ÁREA DA CONSULTA
+       ========================================================= */
+
+    .box-consulta {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.06);
+    }
+
+    .box-consulta h3 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #333;
+    }
+
+    .campo-consulta {
+      margin-bottom: 18px;
+    }
+
+    .campo-consulta label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 7px;
+      color: #444;
+    }
+
+    .campo-consulta input,
+    .campo-consulta select,
+    .campo-consulta textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 11px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      font-family: inherit;
+    }
+
+    .campo-consulta input:focus,
+    .campo-consulta select:focus,
+    .campo-consulta textarea:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+    }
+
+    .campo-consulta textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+
+    /* =========================================================
+       BOTÕES DA CONSULTA
+       ========================================================= */
+
+    .acoes-consulta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .btn-salvar {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-salvar:hover {
+      background: #0056b3;
+    }
+
+    .btn-alta {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-alta:hover {
+      background: #bd2130;
+    }
+
+    .btn-pdf {
+      background: #6f42c1;
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn-pdf:hover {
+      background: #59339d;
+    }
+
+
+    /* =========================================================
+       STATUS
+       ========================================================= */
+
+    .status-consulta {
+      display: none;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 6px;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+
+
+    /* =========================================================
+       MODAL DE ALTA
+       ========================================================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-conteudo {
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      border-radius: 10px;
+      padding: 22px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-conteudo h3 {
+      margin-top: 0;
+    }
+
+    .modal-conteudo textarea {
+      width: 100%;
+      box-sizing: border-box;
+      min-height: 120px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .modal-acoes {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+
+    /* =========================================================
+       RESPONSIVIDADE
+       ========================================================= */
+
+    @media (max-width: 600px) {
+
+      .consultorio-input {
+        flex-wrap: wrap;
+      }
+
+      .cabecalho-consulta {
+        align-items: flex-start;
+      }
+
+      .acoes-consulta button {
+        width: 100%;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+  <!-- =======================================================
+       TELA 1 — PAINEL MÉDICO
+       ======================================================= -->
+
+  <div id="tela-painel">
+
+    <!-- Cabeçalho -->
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:20px;
+        gap:10px;
+        flex-wrap:wrap;
+      "
+    >
+
+      <h2 style="margin:0;">
+        🩺 Painel Médico
+      </h2>
+
+      <button
+        class="btn-abrir-tv"
+        onclick="window.open('tv.html','_blank')"
+      >
+        📺 Abrir Tela da TV
+      </button>
+
+    </div>
+
+
+    <!-- Consultório -->
+    <div class="consultorio-input">
+
+      <label>
+        Meu Consultório:
+      </label>
+
+      <input
+        type="text"
+        id="consultorio-num"
+        value="01"
+      >
+
+      <span
+        style="
+          color:#666;
+          font-size:13px;
+        "
+      >
+        Este número será exibido na TV ao chamar o paciente.
+      </span>
+
+    </div>
+
+
+    <!-- Lista de triagens -->
+    <div id="triagens"></div>
+
+  </div>
+
+
+  <!-- =======================================================
+       TELA 2 — CONSULTA MÉDICA
+       ======================================================= -->
+
+  <div id="tela-consulta">
+
+    <!-- Cabeçalho -->
+    <div class="cabecalho-consulta">
+
+      <h2>
+        🩺 Consulta Médica
+      </h2>
+
+      <button
+        class="btn-voltar"
+        onclick="voltarParaFila()"
+      >
+        ← Voltar para Fila
+      </button>
+
+    </div>
+
+
+    <!-- Identificação -->
+    <div class="paciente-header">
+
+      <h3 id="consulta-paciente-nome">
+        Paciente
+      </h3>
+
+      <p>
+        Atendimento médico
+      </p>
+
+    </div>
+
+
+    <!-- Dados da triagem -->
+    <div class="dados-triagem">
+
+      <div class="dado-triagem">
+
+        <strong>
+          SINTOMA
+        </strong>
+
+        <span id="consulta-sintoma">
+          Não informado
+        </span>
+
+      </div>
+
+
+      <div class="dado-triagem">
+
+        <strong>
+          TEMPERATURA
+        </strong>
+
+        <span id="consulta-temperatura">
+          Não informada
+        </span>
+
+      </div>
+
+
+      <div class="dado-triagem">
+
+        <strong>
+          RISCO
+        </strong>
+
+        <span id="consulta-risco">
+          Não informado
+        </span>
+
+      </div>
+
+
+      <div class="dado-triagem">
+
+        <strong>
+          ALERGIA
+        </strong>
+
+        <span id="consulta-alergia">
+          Nenhuma
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Alerta de alergia -->
+    <div
+      id="alerta-alergia"
+      class="alerta-alergia"
+      style="display:none;"
+    >
+    </div>
+
+
+    <!-- Observação da triagem -->
+    <div class="box-consulta">
+
+      <h3>
+        📋 Informações da Triagem
+      </h3>
+
+      <p>
+        <strong>
+          Observação:
+        </strong>
+      </p>
+
+      <p
+        id="consulta-observacao-triagem"
+        style="
+          background:#f8f9fa;
+          padding:12px;
+          border-radius:6px;
+          margin-bottom:0;
+        "
+      >
+        Nenhuma
+      </p>
+
+    </div>
+
+
+    <!-- Formulário da consulta -->
+    <div class="box-consulta">
+
+      <h3>
+        📝 Registro da Consulta
+      </h3>
+
+
+      <!-- Paciente -->
+      <input
+        id="paciente"
+        type="hidden"
+      >
+
+
+      <!-- Diagnóstico -->
+      <div class="campo-consulta">
+
+        <label for="diagnostico">
+          Diagnóstico
+        </label>
+
+        <input
+          id="diagnostico"
+          placeholder="Digite o diagnóstico do paciente"
+        >
+
+      </div>
+
+
+      <!-- Medicação -->
+      <div class="campo-consulta">
+
+        <label for="medicacao">
+          Medicação
+        </label>
+
+        <select id="medicacao">
+
+          <option value="">
+            Selecione a medicação
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- Observações -->
+      <div class="campo-consulta">
+
+        <label for="obs">
+          Observações
+        </label>
+
+        <textarea
+          id="obs"
+          placeholder="Digite as observações, orientações e informações importantes da consulta"
+        ></textarea>
+
+      </div>
+
+
+      <!-- Status -->
+      <div
+        id="status-consulta"
+        class="status-consulta"
+      >
+      </div>
+
+
+      <!-- Botões -->
+      <div class="acoes-consulta">
+
+        <button
+          class="btn-salvar"
+          onclick="salvar()"
+        >
+          💾 Salvar
+        </button>
+
+
+        <button
+          class="btn-alta"
+          onclick="abrirModalAlta()"
+        >
+          🏠 Dar Alta
+        </button>
+
+
+        <button
+          class="btn-pdf"
+          onclick="gerarPDF()"
+        >
+          📄 Gerar PDF
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL — DAR ALTA
+     ========================================================= -->
+
+<div
+  id="modal-alta"
+  class="modal"
+>
+
+  <div class="modal-conteudo">
+
+    <h3>
+      🏠 Dar Alta do Paciente
+    </h3>
+
+    <p>
+      Informe o motivo da alta:
+    </p>
+
+    <textarea
+      id="motivo-alta"
+      placeholder="Exemplo: Paciente liberado após avaliação médica."
+    ></textarea>
+
+    <div class="modal-acoes">
+
+      <button
+        class="btn-voltar"
+        onclick="fecharModalAlta()"
+      >
+        Cancelar
+      </button>
+
+      <button
+        class="btn-alta"
+        onclick="confirmarAlta()"
+      >
+        Confirmar Alta
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================================================
+   VARIÁVEIS
+   ========================================================= */
+
+let triagensCarregadas = [];
+
+let pacienteSelecionado = null;
+
+let motivoAlta = "";
+
+let pacienteEmAlta = false;
+
+
+/* =========================================================
+   CARREGAR TRIAGENS
+   ========================================================= */
+
+function carregar() {
+
+  fetch("/triagens")
+
+    .then(r => r.json())
+
+    .then(data => {
+
+      triagensCarregadas = data;
+
+      const div =
+        document.getElementById("triagens");
+
+      div.innerHTML = "";
+
+
+      if (data.length === 0) {
+
+        div.innerHTML =
+          "<p style='color:#888; text-align:center;'>Nenhum paciente na fila.</p>";
+
+        return;
+      }
+
+
+      data.forEach((t, index) => {
+
+        div.innerHTML += `
+
+          <div class="card">
+
+            <h3>
+              ${escaparHTML(t.nome)}
+            </h3>
+
+            <p>
+              <b>Sintoma:</b>
+              ${escaparHTML(t.sintoma || "Não informado")}
+            </p>
+
+            <p>
+              <b>Temperatura:</b>
+              ${escaparHTML(t.temperatura || "Não informada")}°C
+            </p>
+
+            <p>
+              <span class="${escaparHTML(t.risco || "")}">
+                ${escaparHTML(t.risco || "Não informado")}
+              </span>
+            </p>
+
+            <p>
+              <b>Alergia:</b>
+              ${escaparHTML(t.alergia || "Nenhuma")}
+            </p>
+
+            <p>
+              <b>Observação:</b>
+              ${escaparHTML(t.observacao || "Nenhuma")}
+            </p>
+
+            <div
+              style="
+                display:flex;
+                gap:8px;
+                flex-wrap:wrap;
+              "
+            >
+
+              <button
+                onclick="selecionar(${index})"
+              >
+                Atender
+              </button>
+
+              <button
+                class="btn-tv"
+                onclick="chamarNaTV('${escaparTexto(t.nome)}')"
+              >
+                📺 Chamar na TV
+              </button>
+
+            </div>
+
+          </div>
+
+        `;
+
+      });
+
+    })
+
+    .catch(error => {
+
+      console.error(
+        "Erro ao carregar triagens:",
+        error
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   ATENDER PACIENTE
+   ========================================================= */
+
+function selecionar(index) {
+
+  const t =
+    triagensCarregadas[index];
+
+
+  if (!t) {
+
+    alert(
+      "Paciente não encontrado."
+    );
+
+    return;
+  }
+
+
+  pacienteSelecionado = t;
+
+  motivoAlta = "";
+
+  pacienteEmAlta = false;
+
+
+  /* -----------------------------------------
+     Preenche os dados
+     ----------------------------------------- */
+
+  document.getElementById("paciente").value =
+    t.nome || "";
+
+
+  document.getElementById("consulta-paciente-nome").textContent =
+    t.nome || "Paciente";
+
+
+  document.getElementById("consulta-sintoma").textContent =
+    t.sintoma || "Não informado";
+
+
+  document.getElementById("consulta-temperatura").textContent =
+    t.temperatura
+      ? t.temperatura + "°C"
+      : "Não informada";
+
+
+  document.getElementById("consulta-risco").textContent =
+    t.risco || "Não informado";
+
+
+  document.getElementById("consulta-alergia").textContent =
+    t.alergia || "Nenhuma";
+
+
+  document.getElementById("consulta-observacao-triagem").textContent =
+    t.observacao || "Nenhuma";
+
+
+  /* -----------------------------------------
+     Observação inicial
+     ----------------------------------------- */
+
+  document.getElementById("obs").value =
+    t.observacao || "";
+
+
+  /* -----------------------------------------
+     Limpa diagnóstico
+     ----------------------------------------- */
+
+  document.getElementById("diagnostico").value =
+    "";
+
+
+  document.getElementById("medicacao").value =
+    "";
+
+
+  /* -----------------------------------------
+     Alerta de alergia
+     ----------------------------------------- */
+
+  const alerta =
+    document.getElementById("alerta-alergia");
+
+
+  if (
+    t.alergia &&
+    t.alergia !== "Nenhuma"
+  ) {
+
+    alerta.style.display = "block";
+
+    alerta.textContent =
+      "⚠️ ATENÇÃO: Paciente possui alergia a " +
+      t.alergia;
+
+  }
+
+  else {
+
+    alerta.style.display = "none";
+
+  }
+
+
+  /* -----------------------------------------
+     Limpa status
+     ----------------------------------------- */
+
+  document.getElementById("status-consulta").style.display =
+    "none";
+
+
+  /* -----------------------------------------
+     TROCA DE TELA
+     ----------------------------------------- */
+
+  document.getElementById("tela-painel").style.display =
+    "none";
+
+
+  document.getElementById("tela-consulta").style.display =
+    "block";
+
+
+  /* -----------------------------------------
+     Rola para o topo
+     ----------------------------------------- */
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+
+  /* -----------------------------------------
+     Alerta adicional
+     ----------------------------------------- */
+
+  if (
+    t.alergia &&
+    t.alergia !== "Nenhuma"
+  ) {
+
+    alert(
+      "⚠️ Paciente possui alergia: " +
+      t.alergia
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   VOLTAR PARA A FILA
+   ========================================================= */
+
+function voltarParaFila() {
+
+  document.getElementById("tela-consulta").style.display =
+    "none";
+
+
+  document.getElementById("tela-painel").style.display =
+    "block";
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+/* =========================================================
+   CHAMAR NA TV
+   ========================================================= */
+
+// Função criada para enviar o nome do paciente para a TV quando ele for chamado no consultório.
+function chamarNaTV(nome) {
+
+  const consultorio =
+    document.getElementById("consultorio-num").value ||
+    "01";
+
+
+  fetch("/tv/chamar", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+      localTipo: "CONSULTÓRIO",
+
+      localNumero: consultorio,
+
+      paciente: nome
+
+    })
+
+  })
+
+  .then(r => r.json())
+
+  .then(() => {
+
+    alert(
+      "✅ " +
+      nome +
+      " foi chamado na TV para o Consultório " +
+      consultorio +
+      "!"
+    );
+
+  })
+
+  .catch(error => {
+
+    console.error(
+      "Erro ao chamar paciente:",
+      error
+    );
+
+    alert(
+      "❌ Não foi possível chamar o paciente na TV."
+    );
+
+  });
+
+}
+
+
+/* =========================================================
+   CARREGAR MEDICAÇÕES
+   ========================================================= */
+
+function carregarMedicacoes() {
+
+  fetch("/lista-medicacoes")
+
+    .then(r => r.json())
+
+    .then(data => {
+
+      preencherMedicacoes(data);
+
+    })
+
+    .catch(error => {
+
+      console.error(
+        "Erro ao carregar medicações:",
+        error
+      );
+
+      /*
+        Caso a API não esteja disponível,
+        são mostrados exemplos.
+      */
+
+      preencherMedicacoes([]);
+
+    });
+
+}
+
+
+/* =========================================================
+   PREENCHER MEDICAÇÕES
+   ========================================================= */
+
+function preencherMedicacoes(data) {
+
+  const select =
+    document.getElementById("medicacao");
+
+
+  select.innerHTML = `
+    <option value="">
+      Selecione a medicação
+    </option>
+  `;
+
+
+  if (
+    Array.isArray(data) &&
+    data.length > 0
+  ) {
+
+    data.forEach(med => {
+
+      const option =
+        document.createElement("option");
+
+      option.value = med;
+
+      option.textContent = med;
+
+      select.appendChild(option);
+
+    });
+
+  }
+
+  else {
+
+    /*
+      Exemplos apenas para demonstração
+      da interface.
+    */
+
+    const exemplos = [
+
+      "Paracetamol 500 mg — exemplo",
+
+      "Dipirona 500 mg — exemplo",
+
+      "Ibuprofeno 200 mg — exemplo",
+
+      "Amoxicilina 500 mg — exemplo",
+
+      "Azitromicina 500 mg — exemplo",
+
+      "Loratadina 10 mg — exemplo",
+
+      "Omeprazol 20 mg — exemplo"
+
+    ];
+
+
+    exemplos.forEach(med => {
+
+      const option =
+        document.createElement("option");
+
+      option.value = med;
+
+      option.textContent = med;
+
+      select.appendChild(option);
+
+    });
+
+  }
+
+}
+
+
+/* =========================================================
+   SALVAR CONSULTA
+   ========================================================= */
+
+function salvar() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+
+  const diagnostico =
+    document.getElementById("diagnostico").value.trim();
+
+
+  const medicacao =
+    document.getElementById("medicacao").value;
+
+
+  const obs =
+    document.getElementById("obs").value.trim();
+
+
+  if (!paciente) {
+
+    alert(
+      "Selecione um paciente clicando em Atender."
+    );
+
+    return;
+  }
+
+
+  if (!diagnostico) {
+
+    alert(
+      "Informe o diagnóstico."
+    );
+
+    document.getElementById("diagnostico").focus();
+
+    return;
+  }
+
+
+  if (!medicacao) {
+
+    alert(
+      "Selecione uma medicação."
+    );
+
+    document.getElementById("medicacao").focus();
+
+    return;
+  }
+
+
+  fetch("/consulta", {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+      paciente,
+      diagnostico,
+      medicacao,
+      obs
+
+    })
+
+  })
+
+  .then(r => r.json())
+
+  .then(() => {
+
+    mostrarStatus(
+      "✅ Consulta salva com sucesso!"
+    );
+
+    alert(
+      "Consulta salva com sucesso!"
+    );
+
+  })
+
+  .catch(error => {
+
+    console.error(
+      "Erro ao salvar consulta:",
+      error
+    );
+
+    alert(
+      "❌ Não foi possível salvar a consulta."
+    );
+
+  });
+
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+function mostrarStatus(mensagem) {
+
+  const status =
+    document.getElementById("status-consulta");
+
+
+  status.textContent =
+    mensagem;
+
+
+  status.style.display =
+    "block";
+
+}
+
+
+/* =========================================================
+   ABRIR MODAL DE ALTA
+   ========================================================= */
+
+function abrirModalAlta() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+
+  if (!paciente) {
+
+    alert(
+      "Selecione um paciente clicando em Atender."
+    );
+
+    return;
+  }
+
+
+  const diagnostico =
+    document.getElementById("diagnostico").value.trim();
+
+
+  if (!diagnostico) {
+
+    alert(
+      "Informe o diagnóstico antes de dar alta."
+    );
+
+    document.getElementById("diagnostico").focus();
+
+    return;
+  }
+
+
+  document.getElementById("motivo-alta").value =
+    "";
+
+
+  document.getElementById("modal-alta").style.display =
+    "flex";
+
+}
+
+
+/* =========================================================
+   FECHAR MODAL
+   ========================================================= */
+
+function fecharModalAlta() {
+
+  document.getElementById("modal-alta").style.display =
+    "none";
+
+}
+
+
+/* =========================================================
+   CONFIRMAR ALTA
+   ========================================================= */
+
+function confirmarAlta() {
+
+  const motivo =
+    document
+      .getElementById("motivo-alta")
+      .value
+      .trim();
+
+
+  if (!motivo) {
+
+    alert(
+      "Informe o motivo da alta."
+    );
+
+    document
+      .getElementById("motivo-alta")
+      .focus();
+
+    return;
+  }
+
+
+  motivoAlta =
+    motivo;
+
+
+  pacienteEmAlta =
+    true;
+
+
+  fecharModalAlta();
+
+
+  mostrarStatus(
+    "✅ Paciente recebeu alta. Motivo: " +
+    motivoAlta
+  );
+
+
+  alert(
+    "🏠 Alta realizada com sucesso!"
+  );
+
+}
+
+
+/* =========================================================
+   GERAR PDF
+   ========================================================= */
+
+function gerarPDF() {
+
+  const paciente =
+    document.getElementById("paciente").value;
+
+
+  if (!paciente) {
+
+    alert(
+      "Selecione um paciente clicando em Atender."
+    );
+
+    return;
+  }
+
+
+  const diagnostico =
+    document.getElementById("diagnostico").value ||
+    "Não informado";
+
+
+  const medicacao =
+    document.getElementById("medicacao").value ||
+    "Não informada";
+
+
+  const obs =
+    document.getElementById("obs").value ||
+    "Nenhuma";
+
+
+  const sintoma =
+    document.getElementById("consulta-sintoma").textContent ||
+    "Não informado";
+
+
+  const temperatura =
+    document.getElementById("consulta-temperatura").textContent ||
+    "Não informada";
+
+
+  const risco =
+    document.getElementById("consulta-risco").textContent ||
+    "Não informado";
+
+
+  const alergia =
+    document.getElementById("consulta-alergia").textContent ||
+    "Nenhuma";
+
+
+  const observacaoTriagem =
+    document.getElementById(
+      "consulta-observacao-triagem"
+    ).textContent ||
+    "Nenhuma";
+
+
+  const motivo =
+    motivoAlta ||
+    "Alta ainda não realizada.";
+
+
+  const dataAtual =
+    new Date().toLocaleString("pt-BR");
+
+
+  const janela =
+    window.open("", "_blank");
+
+
+  if (!janela) {
+
+    alert(
+      "❌ O navegador bloqueou a abertura do relatório. Permita pop-ups para este site."
+    );
+
+    return;
+  }
+
+
+  janela.document.write(`
+
+    <!DOCTYPE html>
+
+    <html>
+
+    <head>
+
+      <meta charset="UTF-8">
+
+      <title>
+        Relatório Médico - ${escaparHTML(paciente)}
+      </title>
+
+
+      <style>
+
+        body {
+          font-family: Arial, sans-serif;
+          color: #222;
+          margin: 40px;
+          line-height: 1.5;
+        }
+
+        .cabecalho {
+          text-align: center;
+          border-bottom: 2px solid #333;
+          padding-bottom: 15px;
+          margin-bottom: 25px;
+        }
+
+        .cabecalho h1 {
+          margin: 0;
+          font-size: 24px;
+        }
+
+        .cabecalho p {
+          color: #666;
+        }
+
+        .secao {
+          margin-bottom: 22px;
+        }
+
+        .secao h2 {
+          font-size: 17px;
+          background: #f0f0f0;
+          padding: 8px;
+          border-left: 4px solid #007bff;
+        }
+
+        .campo {
+          margin: 8px 0;
+        }
+
+        .campo strong {
+          display: inline-block;
+          min-width: 170px;
+        }
+
+        .observacao {
+          white-space: pre-wrap;
+          background: #fafafa;
+          border: 1px solid #ddd;
+          padding: 12px;
+          border-radius: 5px;
+        }
+
+        .alta {
+          background: #fff3cd;
+          border: 1px solid #ffeeba;
+          padding: 12px;
+          border-radius: 5px;
+        }
+
+        .rodape {
+          margin-top: 50px;
+          padding-top: 15px;
+          border-top: 1px solid #ccc;
+          text-align: center;
+          color: #777;
+          font-size: 12px;
+        }
+
+        @media print {
+
+          body {
+            margin: 20px;
+          }
+
+          .nao-imprimir {
+            display: none;
+          }
+
+        }
+
+      </style>
+
+    </head>
+
+
+    <body>
+
+
+      <div class="cabecalho">
+
+        <h1>
+          🩺 Relatório da Consulta Médica
+        </h1>
+
+        <p>
+          Data/Hora:
+          ${escaparHTML(dataAtual)}
+        </p>
+
+      </div>
+
+
+      <div class="secao">
+
+        <h2>
+          Dados do Paciente
+        </h2>
+
+        <div class="campo">
+
+          <strong>
+            Paciente:
+          </strong>
+
+          ${escaparHTML(paciente)}
+
+        </div>
+
+
+        <div class="campo">
+
+          <strong>
+            Sintoma:
+          </strong>
+
+          ${escaparHTML(sintoma)}
+
+        </div>
+
+
+        <div class="campo">
+
+          <strong>
+            Temperatura:
+          </strong>
+
+          ${escaparHTML(temperatura)}
+
+        </div>
+
+
+        <div class="campo">
+
+          <strong>
+            Risco:
+          </strong>
+
+          ${escaparHTML(risco)}
+
+        </div>
+
+
+        <div class="campo">
+
+          <strong>
+            Alergia:
+          </strong>
+
+          ${escaparHTML(alergia)}
+
+        </div>
+
+
+        <div class="campo">
+
+          <strong>
+            Observação da triagem:
+          </strong>
+
+          ${escaparHTML(observacaoTriagem)}
+
+        </div>
+
+      </div>
+
+
+      <div class="secao">
+
+        <h2>
+          Consulta Médica
+        </h2>
+
+
+        <div class="campo">
+
+          <strong>
+            Diagnóstico:
+          </strong>
+
+          ${escaparHTML(diagnostico)}
+
+        </div>
+
+
+        <div class="campo">
+
+          <strong>
+            Medicação:
+          </strong>
+
+          ${escaparHTML(medicacao)}
+
+        </div>
+
+      </div>
+
+
+      <div class="secao">
+
+        <h2>
+          Observações
+        </h2>
+
+        <div class="observacao">
+
+          ${escaparHTML(obs)}
+
+        </div>
+
+      </div>
+
+
+      <div class="secao">
+
+        <h2>
+          Alta
+        </h2>
+
+        <div class="alta">
+
+          <strong>
+            Motivo da alta:
+          </strong>
+
+          <p>
+            ${escaparHTML(motivo)}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="rodape">
+
+        Relatório gerado pelo Painel Médico.
+
+      </div>
+
+
+      <div
+        class="nao-imprimir"
+        style="
+          text-align:center;
+          margin-top:30px;
+        "
+      >
+
+        <button
+          onclick="window.print()"
+          style="
+            background:#007bff;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:5px;
+            cursor:pointer;
+          "
+        >
+
+          🖨️ Imprimir / Salvar como PDF
+
+        </button>
+
+      </div>
+
+
+    </body>
+
+    </html>
+
+  `);
+
+
+  janela.document.close();
+
+}
+
+
+/* =========================================================
+   ESCAPAR HTML
+   ========================================================= */
+
+function escaparHTML(texto) {
+
+  return String(texto)
+
+    .replace(/&/g, "&amp;")
+
+    .replace(/</g, "&lt;")
+
+    .replace(/>/g, "&gt;")
+
+    .replace(/"/g, "&quot;")
+
+    .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   ESCAPAR TEXTO PARA ONCLICK
+   ========================================================= */
+
+function escaparTexto(texto) {
+
+  return String(texto)
+
+    .replace(/\\/g, "\\\\")
+
+    .replace(/'/g, "\\'")
+
+    .replace(/"/g, '\\"');
+
+}
+
+
+/* =========================================================
+   FECHAR MODAL CLICANDO FORA
+   ========================================================= */
+
+window.addEventListener(
+  "click",
+  function(event) {
+
+    const modal =
+      document.getElementById("modal-alta");
+
+
+    if (event.target === modal) {
+
+      fecharModalAlta();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   INICIALIZAÇÃO
+   ========================================================= */
+
+carregar();
+
+carregarMedicacoes();
+
+
+/*
+  Atualiza a fila automaticamente
+  a cada 10 segundos.
+*/
+
+setInterval(
+  carregar,
+  10000
+);
+
+</script>
+
+</body>
+
+</html>
