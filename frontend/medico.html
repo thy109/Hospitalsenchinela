@@ -1,74 +1,133 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
 
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Painel Médico</title>
+
+
+  <!-- =====================================================
+       FONTES
+  ====================================================== -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
 
   <style>
 
-    /* =========================================================
-       BOTÕES ORIGINAIS
-       ========================================================= */
+    /* =====================================================
+       RESET
+    ====================================================== */
 
-    .btn-tv {
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 8px;
-    }
-
-    .btn-tv:hover {
-      background: #1e7e34;
-    }
-
-    .btn-abrir-tv {
-      background: #17a2b8;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .btn-abrir-tv:hover {
-      background: #117a8b;
-    }
-
-    .consultorio-input {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
-      background: #f0f4ff;
-      padding: 10px 14px;
-      border-radius: 6px;
-      border: 1px solid #d0d8f0;
-    }
-
-    .consultorio-input label {
-      font-weight: bold;
-    }
-
-    .consultorio-input input {
-      width: 60px;
-      text-align: center;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 4px 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
 
-    /* =========================================================
+    /* =====================================================
+       CORES PRINCIPAIS
+    ====================================================== */
+
+    :root {
+
+      --navy: #071827;
+      --navy-2: #0b2239;
+      --navy-3: #12324d;
+
+      --background: #071827;
+
+      --white: #ffffff;
+      --off-white: #f7f9fa;
+      --soft: #eef3f5;
+
+      --border: #dbe3e8;
+
+      --text: #263746;
+      --muted: #74838d;
+
+      --green: #287653;
+      --green-bg: #e8f4ed;
+
+      --yellow: #9a741b;
+      --yellow-bg: #fbf3dc;
+
+      --red: #b44740;
+      --red-bg: #fae9e7;
+    }
+
+
+    /* =====================================================
+       BODY
+    ====================================================== */
+
+    body {
+
+      min-height: 100vh;
+
+      background:
+        linear-gradient(
+          135deg,
+          #061522 0%,
+          #0a1c2c 50%,
+          #071827 100%
+        );
+
+      color: var(--text);
+
+      font-family: "Montserrat", sans-serif;
+
+      padding: 35px 20px;
+    }
+
+
+    /* =====================================================
+       CONTAINER
+    ====================================================== */
+
+    .container {
+
+      width: 100%;
+
+      max-width: 1250px;
+
+      margin: 0 auto;
+
+      background: var(--off-white);
+
+      border-radius: 20px;
+
+      padding: 40px;
+
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.30);
+
+      min-height: calc(100vh - 70px);
+    }
+
+
+    /* =====================================================
        CONTROLE DAS TELAS
-       ========================================================= */
+    ====================================================== */
 
     #tela-painel {
       display: block;
@@ -79,295 +138,1160 @@
     }
 
 
-    /* =========================================================
+    /* =====================================================
+       CABEÇALHO PRINCIPAL
+    ====================================================== */
+
+    .cabecalho-principal {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 25px;
+
+      padding-bottom: 28px;
+
+      margin-bottom: 28px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+
+    .titulo-principal {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+    }
+
+
+    .icone-hospital {
+
+      width: 52px;
+
+      height: 52px;
+
+      border-radius: 14px;
+
+      background: var(--navy);
+
+      color: white;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      font-size: 22px;
+
+      box-shadow:
+        0 8px 20px rgba(7, 24, 39, 0.18);
+    }
+
+
+    .titulo-principal h1 {
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 40px;
+
+      line-height: 0.95;
+
+      color: var(--navy);
+
+      font-weight: 700;
+    }
+
+
+    .titulo-principal span {
+
+      display: block;
+
+      margin-top: 6px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      font-weight: 600;
+
+      letter-spacing: 1.5px;
+
+      text-transform: uppercase;
+    }
+
+
+    /* =====================================================
+       BOTÃO TV
+    ====================================================== */
+
+    .btn-abrir-tv {
+
+      border: 1px solid var(--border);
+
+      background: white;
+
+      color: var(--navy);
+
+      padding: 13px 19px;
+
+      border-radius: 9px;
+
+      cursor: pointer;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      transition: 0.2s;
+    }
+
+
+    .btn-abrir-tv:hover {
+
+      background: var(--navy);
+
+      color: white;
+
+      border-color: var(--navy);
+
+      transform: translateY(-1px);
+    }
+
+
+    /* =====================================================
+       CONSULTÓRIO
+    ====================================================== */
+
+    .consultorio-input {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      padding: 17px 20px;
+
+      margin-bottom: 35px;
+
+      background: var(--soft);
+
+      border: 1px solid var(--border);
+
+      border-radius: 12px;
+    }
+
+
+    .consultorio-esquerda {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+    }
+
+
+    .consultorio-input label {
+
+      color: var(--navy);
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+
+    .consultorio-input input {
+
+      width: 65px;
+
+      padding: 9px;
+
+      text-align: center;
+
+      border: 1px solid #cbd6dc;
+
+      border-radius: 8px;
+
+      background: white;
+
+      color: var(--navy);
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 16px;
+
+      font-weight: 700;
+
+      outline: none;
+    }
+
+
+    .consultorio-input input:focus {
+
+      border-color: var(--navy);
+    }
+
+
+    .consultorio-descricao {
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+
+    /* =====================================================
+       TÍTULO DAS SEÇÕES
+    ====================================================== */
+
+    .titulo-secao {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 18px;
+    }
+
+
+    .titulo-secao::before {
+
+      content: "";
+
+      width: 4px;
+
+      height: 25px;
+
+      border-radius: 10px;
+
+      background: var(--navy);
+    }
+
+
+    .titulo-secao h2 {
+
+      font-family: "Cormorant Garamond", serif;
+
+      color: var(--navy);
+
+      font-size: 29px;
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       CARDS DA FILA
+    ====================================================== */
+
+    #triagens {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 14px;
+    }
+
+
+    .card {
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      padding: 22px;
+
+      box-shadow:
+        0 4px 15px rgba(8, 28, 43, 0.04);
+
+      transition: 0.2s;
+    }
+
+
+    .card:hover {
+
+      border-color: #bdcad1;
+
+      box-shadow:
+        0 9px 25px rgba(8, 28, 43, 0.08);
+
+      transform: translateY(-1px);
+    }
+
+
+    .card-topo {
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 17px;
+    }
+
+
+    .card h3 {
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 26px;
+
+      color: var(--navy);
+
+      font-weight: 700;
+    }
+
+
+    /* =====================================================
+       INFORMAÇÕES DO PACIENTE
+    ====================================================== */
+
+    .dados-paciente {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
+      gap: 18px;
+
+      padding-bottom: 18px;
+
+      border-bottom: 1px solid #edf1f3;
+
+      margin-bottom: 15px;
+    }
+
+
+    .info-paciente {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 5px;
+    }
+
+
+    .info-paciente strong {
+
+      color: #84929b;
+
+      font-size: 9px;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+    }
+
+
+    .info-paciente span {
+
+      color: #40525e;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+    }
+
+
+    /* =====================================================
+       RISCO
+    ====================================================== */
+
+    .risco {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      width: fit-content;
+
+      padding: 6px 10px;
+
+      border-radius: 20px;
+
+      font-size: 9px !important;
+
+      font-weight: 700 !important;
+
+      text-transform: uppercase;
+
+      letter-spacing: .5px;
+    }
+
+
+    .risco::before {
+
+      content: "";
+
+      width: 6px;
+
+      height: 6px;
+
+      border-radius: 50%;
+
+      background: currentColor;
+    }
+
+
+    .verde {
+
+      background: var(--green-bg);
+
+      color: var(--green);
+    }
+
+
+    .amarelo {
+
+      background: var(--yellow-bg);
+
+      color: var(--yellow);
+    }
+
+
+    .vermelho {
+
+      background: var(--red-bg);
+
+      color: var(--red);
+    }
+
+
+    /* =====================================================
+       OBSERVAÇÃO
+    ====================================================== */
+
+    .observacao-card {
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      line-height: 1.6;
+
+      margin-bottom: 17px;
+    }
+
+
+    .observacao-card strong {
+
+      color: #4a5c67;
+    }
+
+
+    /* =====================================================
+       AÇÕES DO PACIENTE
+    ====================================================== */
+
+    .acoes-paciente {
+
+      display: flex;
+
+      justify-content: flex-end;
+
+      gap: 9px;
+    }
+
+
+    .acoes-paciente button {
+
+      padding: 10px 17px;
+
+      border-radius: 8px;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+    }
+
+
+    .btn-atender {
+
+      background: var(--navy);
+
+      color: white;
+
+      border: 1px solid var(--navy);
+    }
+
+
+    .btn-atender:hover {
+
+      background: var(--navy-3);
+
+      transform: translateY(-1px);
+    }
+
+
+    .btn-tv {
+
+      background: white;
+
+      color: #536672;
+
+      border: 1px solid var(--border);
+    }
+
+
+    .btn-tv:hover {
+
+      background: var(--soft);
+
+      border-color: #bdcad1;
+    }
+
+
+    /* =====================================================
+       FILA VAZIA
+    ====================================================== */
+
+    .fila-vazia {
+
+      text-align: center;
+
+      padding: 50px 20px;
+
+      background: white;
+
+      border: 1px dashed var(--border);
+
+      border-radius: 13px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
        CABEÇALHO DA CONSULTA
-       ========================================================= */
+    ====================================================== */
 
     .cabecalho-consulta {
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
       gap: 15px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+
+      margin-bottom: 28px;
+
+      padding-bottom: 22px;
+
+      border-bottom: 1px solid var(--border);
     }
+
 
     .cabecalho-consulta h2 {
-      margin: 0;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 34px;
+
+      color: var(--navy);
     }
+
 
     .btn-voltar {
-      background: #6c757d;
-      color: white;
-      border: none;
+
+      border: 1px solid var(--border);
+
+      background: white;
+
+      color: #536672;
+
       padding: 10px 16px;
-      border-radius: 5px;
+
+      border-radius: 8px;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
       cursor: pointer;
-      font-size: 14px;
+
+      transition: .2s;
     }
+
 
     .btn-voltar:hover {
-      background: #545b62;
+
+      background: var(--soft);
+
+      color: var(--navy);
     }
 
 
-    /* =========================================================
+    /* =====================================================
        IDENTIFICAÇÃO DO PACIENTE
-       ========================================================= */
+    ====================================================== */
 
     .paciente-header {
-      background: linear-gradient(135deg, #007bff, #0056b3);
+
+      background: var(--navy);
+
       color: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin-bottom: 20px;
+
+      padding: 24px 27px;
+
+      border-radius: 13px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 10px 25px rgba(7, 24, 39, 0.12);
     }
+
 
     .paciente-header h3 {
-      margin: 0 0 8px 0;
-      font-size: 24px;
+
+      font-family: "Cormorant Garamond", serif;
+
+      font-size: 29px;
+
+      margin-bottom: 5px;
     }
+
 
     .paciente-header p {
-      margin: 0;
-      opacity: 0.9;
+
+      font-size: 10px;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      opacity: .65;
     }
 
 
-    /* =========================================================
-       CARDS DOS DADOS DA TRIAGEM
-       ========================================================= */
+    /* =====================================================
+       DADOS DA TRIAGEM
+    ====================================================== */
 
     .dados-triagem {
+
       display: grid;
-      grid-template-columns: repeat(
-        auto-fit,
-        minmax(180px, 1fr)
-      );
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 12px;
-      margin-bottom: 20px;
+
+      margin-bottom: 18px;
     }
+
 
     .dado-triagem {
-      background: #f8f9fa;
-      border: 1px solid #dee2e6;
-      border-radius: 8px;
-      padding: 14px;
+
+      background: white;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      padding: 15px 16px;
     }
+
 
     .dado-triagem strong {
+
       display: block;
-      color: #555;
-      font-size: 13px;
-      margin-bottom: 6px;
+
+      color: #82919a;
+
+      font-size: 9px;
+
+      letter-spacing: 1px;
+
+      margin-bottom: 7px;
     }
+
 
     .dado-triagem span {
-      font-size: 15px;
-      color: #222;
+
+      color: #3d505c;
+
+      font-size: 12px;
     }
+
+
+    /* =====================================================
+       ALERTA DE ALERGIA
+    ====================================================== */
 
     .alerta-alergia {
-      background: #fff3cd;
-      border: 1px solid #ffeeba;
-      color: #856404;
-      padding: 12px;
-      border-radius: 7px;
-      margin-bottom: 20px;
-      font-weight: bold;
+
+      display: none;
+
+      background: var(--yellow-bg);
+
+      border: 1px solid #ead89e;
+
+      color: #806317;
+
+      padding: 13px 15px;
+
+      border-radius: 9px;
+
+      margin-bottom: 18px;
+
+      font-size: 11px;
+
+      font-weight: 600;
     }
 
 
-    /* =========================================================
-       ÁREA DA CONSULTA
-       ========================================================= */
+    /* =====================================================
+       BOX DA CONSULTA
+    ====================================================== */
 
     .box-consulta {
+
       background: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.06);
+
+      border: 1px solid var(--border);
+
+      border-radius: 13px;
+
+      padding: 25px;
+
+      margin-bottom: 18px;
+
+      box-shadow:
+        0 4px 16px rgba(8, 28, 43, 0.035);
     }
+
 
     .box-consulta h3 {
-      margin-top: 0;
-      margin-bottom: 18px;
-      color: #333;
+
+      font-family: "Cormorant Garamond", serif;
+
+      color: var(--navy);
+
+      font-size: 24px;
+
+      margin-bottom: 20px;
     }
+
+
+    /* =====================================================
+       CAMPOS
+    ====================================================== */
 
     .campo-consulta {
+
       margin-bottom: 18px;
     }
 
-    .campo-consulta label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 7px;
-      color: #444;
+
+    .campo-consulta:last-child {
+
+      margin-bottom: 0;
     }
+
+
+    .campo-consulta label {
+
+      display: block;
+
+      color: #71818b;
+
+      font-size: 9px;
+
+      font-weight: 700;
+
+      letter-spacing: 1px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
 
     .campo-consulta input,
     .campo-consulta select,
     .campo-consulta textarea {
+
       width: 100%;
-      box-sizing: border-box;
-      padding: 11px 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 15px;
-      font-family: inherit;
+
+      border: 1px solid #d4dfe4;
+
+      background: #f8fafb;
+
+      color: var(--text);
+
+      padding: 12px 13px;
+
+      border-radius: 8px;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 12px;
+
+      outline: none;
+
+      transition: .2s;
     }
+
 
     .campo-consulta input:focus,
     .campo-consulta select:focus,
     .campo-consulta textarea:focus {
-      outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+
+      border-color: var(--navy);
+
+      background: white;
+
+      box-shadow:
+        0 0 0 3px rgba(11, 34, 57, 0.05);
     }
+
 
     .campo-consulta textarea {
-      min-height: 130px;
+
+      min-height: 125px;
+
       resize: vertical;
+
+      line-height: 1.6;
     }
 
 
-    /* =========================================================
-       BOTÕES DA CONSULTA
-       ========================================================= */
-
-    .acoes-consulta {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .btn-salvar {
-      background: #007bff;
-      color: white;
-      border: none;
-      padding: 11px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-salvar:hover {
-      background: #0056b3;
-    }
-
-    .btn-alta {
-      background: #dc3545;
-      color: white;
-      border: none;
-      padding: 11px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-alta:hover {
-      background: #bd2130;
-    }
-
-    .btn-pdf {
-      background: #6f42c1;
-      color: white;
-      border: none;
-      padding: 11px 20px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-pdf:hover {
-      background: #59339d;
-    }
-
-
-    /* =========================================================
+    /* =====================================================
        STATUS
-       ========================================================= */
+    ====================================================== */
 
     .status-consulta {
+
       display: none;
+
+      background: var(--green-bg);
+
+      border: 1px solid #cce4d6;
+
+      color: var(--green);
+
       padding: 12px;
+
+      border-radius: 8px;
+
+      font-size: 11px;
+
       margin-top: 15px;
-      border-radius: 6px;
-      background: #d4edda;
-      border: 1px solid #c3e6cb;
-      color: #155724;
     }
 
 
-    /* =========================================================
-       MODAL DE ALTA
-       ========================================================= */
+    /* =====================================================
+       BOTÕES DA CONSULTA
+    ====================================================== */
+
+    .acoes-consulta {
+
+      display: flex;
+
+      justify-content: flex-end;
+
+      gap: 9px;
+
+      flex-wrap: wrap;
+
+      margin-top: 22px;
+
+      padding-top: 20px;
+
+      border-top: 1px solid #edf1f3;
+    }
+
+
+    .acoes-consulta button {
+
+      padding: 11px 18px;
+
+      border-radius: 8px;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 11px;
+
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: .2s;
+    }
+
+
+    .btn-salvar {
+
+      background: var(--navy);
+
+      color: white;
+
+      border: 1px solid var(--navy);
+    }
+
+
+    .btn-salvar:hover {
+
+      background: var(--navy-3);
+    }
+
+
+    .btn-alta {
+
+      background: white;
+
+      color: var(--red);
+
+      border: 1px solid #e3c4c1;
+    }
+
+
+    .btn-alta:hover {
+
+      background: var(--red-bg);
+    }
+
+
+    .btn-pdf {
+
+      background: white;
+
+      color: #536672;
+
+      border: 1px solid var(--border);
+    }
+
+
+    .btn-pdf:hover {
+
+      background: var(--soft);
+    }
+
+
+    /* =====================================================
+       MODAL
+    ====================================================== */
 
     .modal {
+
       display: none;
+
       position: fixed;
+
       z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
+
+      inset: 0;
+
+      background: rgba(4, 15, 25, .70);
+
       align-items: center;
+
       justify-content: center;
+
+      padding: 20px;
+
+      backdrop-filter: blur(5px);
     }
+
 
     .modal-conteudo {
-      background: white;
-      width: 90%;
+
+      width: 100%;
+
       max-width: 500px;
-      border-radius: 10px;
-      padding: 22px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+
+      background: var(--off-white);
+
+      border-radius: 15px;
+
+      padding: 27px;
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.30);
     }
+
 
     .modal-conteudo h3 {
-      margin-top: 0;
+
+      font-family: "Cormorant Garamond", serif;
+
+      color: var(--navy);
+
+      font-size: 27px;
+
+      margin-bottom: 8px;
     }
+
+
+    .modal-conteudo > p {
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      margin-bottom: 15px;
+    }
+
 
     .modal-conteudo textarea {
+
       width: 100%;
-      box-sizing: border-box;
+
       min-height: 120px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+
       resize: vertical;
-      font-family: inherit;
-      font-size: 14px;
+
+      padding: 12px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: white;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 12px;
+
+      outline: none;
     }
+
+
+    .modal-conteudo textarea:focus {
+
+      border-color: var(--navy);
+    }
+
 
     .modal-acoes {
+
       display: flex;
+
       justify-content: flex-end;
-      gap: 10px;
-      margin-top: 15px;
+
+      gap: 9px;
+
+      margin-top: 18px;
     }
 
 
-    /* =========================================================
+    /* =====================================================
        RESPONSIVIDADE
-       ========================================================= */
+    ====================================================== */
 
-    @media (max-width: 600px) {
+    @media (max-width: 900px) {
 
-      .consultorio-input {
-        flex-wrap: wrap;
+      body {
+        padding: 18px 12px;
       }
 
+      .container {
+        padding: 27px 22px;
+      }
+
+      .dados-paciente,
+      .dados-triagem {
+        grid-template-columns: 1fr 1fr;
+      }
+
+    }
+
+
+    @media (max-width: 650px) {
+
+      body {
+        padding: 8px;
+      }
+
+      .container {
+        padding: 22px 15px;
+
+        border-radius: 13px;
+      }
+
+      .cabecalho-principal,
       .cabecalho-consulta {
+        flex-direction: column;
+
         align-items: flex-start;
       }
 
+      .btn-abrir-tv {
+        width: 100%;
+      }
+
+      .consultorio-input {
+        flex-direction: column;
+
+        align-items: flex-start;
+      }
+
+      .consultorio-descricao {
+        line-height: 1.5;
+      }
+
+      .dados-paciente,
+      .dados-triagem {
+        grid-template-columns: 1fr;
+      }
+
+      .acoes-paciente,
+      .acoes-consulta {
+        flex-direction: column;
+      }
+
+      .acoes-paciente button,
       .acoes-consulta button {
+        width: 100%;
+      }
+
+      .modal-acoes {
+        flex-direction: column;
+      }
+
+      .modal-acoes button {
         width: 100%;
       }
 
@@ -380,30 +1304,41 @@
 
 <body>
 
+
 <div class="container">
 
 
-  <!-- =======================================================
+  <!-- =====================================================
        TELA 1 — PAINEL MÉDICO
-       ======================================================= -->
+  ====================================================== -->
 
   <div id="tela-painel">
 
-    <!-- Cabeçalho -->
-    <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        margin-bottom:20px;
-        gap:10px;
-        flex-wrap:wrap;
-      "
-    >
 
-      <h2 style="margin:0;">
-        🩺 Painel Médico
-      </h2>
+    <!-- CABEÇALHO -->
+
+    <header class="cabecalho-principal">
+
+      <div class="titulo-principal">
+
+        <div class="icone-hospital">
+          ✚
+        </div>
+
+        <div>
+
+          <h1>
+            Painel Médico
+          </h1>
+
+          <span>
+            Gestão de atendimento
+          </span>
+
+        </div>
+
+      </div>
+
 
       <button
         class="btn-abrir-tv"
@@ -412,52 +1347,71 @@
         📺 Abrir Tela da TV
       </button>
 
-    </div>
+    </header>
 
 
-    <!-- Consultório -->
+
+    <!-- CONSULTÓRIO -->
+
     <div class="consultorio-input">
 
-      <label>
-        Meu Consultório:
-      </label>
+      <div class="consultorio-esquerda">
 
-      <input
-        type="text"
-        id="consultorio-num"
-        value="01"
-      >
+        <label>
+          Meu consultório
+        </label>
 
-      <span
-        style="
-          color:#666;
-          font-size:13px;
-        "
-      >
+        <input
+          type="text"
+          id="consultorio-num"
+          value="01"
+          maxlength="3"
+        >
+
+      </div>
+
+
+      <span class="consultorio-descricao">
         Este número será exibido na TV ao chamar o paciente.
       </span>
 
     </div>
 
 
-    <!-- Lista de triagens -->
+
+    <!-- FILA -->
+
+    <div class="titulo-secao">
+
+      <h2>
+        Pacientes em espera
+      </h2>
+
+    </div>
+
+
     <div id="triagens"></div>
+
 
   </div>
 
 
-  <!-- =======================================================
-       TELA 2 — CONSULTA MÉDICA
-       ======================================================= -->
+
+  <!-- =====================================================
+       TELA 2 — CONSULTA
+  ====================================================== -->
 
   <div id="tela-consulta">
 
-    <!-- Cabeçalho -->
+
+    <!-- CABEÇALHO -->
+
     <div class="cabecalho-consulta">
 
       <h2>
-        🩺 Consulta Médica
+        Consulta Médica
       </h2>
+
 
       <button
         class="btn-voltar"
@@ -469,7 +1423,9 @@
     </div>
 
 
-    <!-- Identificação -->
+
+    <!-- PACIENTE -->
+
     <div class="paciente-header">
 
       <h3 id="consulta-paciente-nome">
@@ -483,13 +1439,16 @@
     </div>
 
 
-    <!-- Dados da triagem -->
+
+    <!-- DADOS DA TRIAGEM -->
+
     <div class="dados-triagem">
+
 
       <div class="dado-triagem">
 
         <strong>
-          SINTOMA
+          Sintoma
         </strong>
 
         <span id="consulta-sintoma">
@@ -502,7 +1461,7 @@
       <div class="dado-triagem">
 
         <strong>
-          TEMPERATURA
+          Temperatura
         </strong>
 
         <span id="consulta-temperatura">
@@ -515,7 +1474,7 @@
       <div class="dado-triagem">
 
         <strong>
-          RISCO
+          Risco
         </strong>
 
         <span id="consulta-risco">
@@ -528,7 +1487,7 @@
       <div class="dado-triagem">
 
         <strong>
-          ALERGIA
+          Alergia
         </strong>
 
         <span id="consulta-alergia">
@@ -537,62 +1496,75 @@
 
       </div>
 
+
     </div>
 
 
-    <!-- Alerta de alergia -->
+
+    <!-- ALERTA -->
+
     <div
       id="alerta-alergia"
       class="alerta-alergia"
-      style="display:none;"
-    >
-    </div>
+    ></div>
 
 
-    <!-- Observação da triagem -->
+
+    <!-- INFORMAÇÕES DA TRIAGEM -->
+
     <div class="box-consulta">
 
       <h3>
-        📋 Informações da Triagem
+        Informações da Triagem
       </h3>
 
-      <p>
-        <strong>
-          Observação:
-        </strong>
-      </p>
 
-      <p
-        id="consulta-observacao-triagem"
-        style="
-          background:#f8f9fa;
-          padding:12px;
-          border-radius:6px;
-          margin-bottom:0;
-        "
-      >
-        Nenhuma
-      </p>
+      <div class="campo-consulta">
+
+        <label>
+          Observação da triagem
+        </label>
+
+        <div
+          id="consulta-observacao-triagem"
+          style="
+            background:#f8fafb;
+            border:1px solid #dbe3e8;
+            padding:13px;
+            border-radius:8px;
+            color:#536672;
+            font-size:12px;
+            line-height:1.6;
+          "
+        >
+          Nenhuma
+        </div>
+
+      </div>
 
     </div>
 
 
-    <!-- Formulário da consulta -->
+
+    <!-- REGISTRO DA CONSULTA -->
+
     <div class="box-consulta">
 
       <h3>
-        📝 Registro da Consulta
+        Registro da Consulta
       </h3>
 
 
-      <!-- Paciente -->
+      <!-- Campo escondido que mantém o paciente -->
+
       <input
         id="paciente"
         type="hidden"
       >
 
 
-      <!-- Diagnóstico -->
+      <!-- DIAGNÓSTICO -->
+
       <div class="campo-consulta">
 
         <label for="diagnostico">
@@ -607,7 +1579,8 @@
       </div>
 
 
-      <!-- Medicação -->
+      <!-- MEDICAÇÃO -->
+
       <div class="campo-consulta">
 
         <label for="medicacao">
@@ -625,7 +1598,8 @@
       </div>
 
 
-      <!-- Observações -->
+      <!-- OBSERVAÇÕES -->
+
       <div class="campo-consulta">
 
         <label for="obs">
@@ -640,22 +1614,23 @@
       </div>
 
 
-      <!-- Status -->
+      <!-- STATUS -->
+
       <div
         id="status-consulta"
         class="status-consulta"
-      >
-      </div>
+      ></div>
 
 
-      <!-- Botões -->
+      <!-- AÇÕES -->
+
       <div class="acoes-consulta">
 
         <button
           class="btn-salvar"
           onclick="salvar()"
         >
-          💾 Salvar
+          Salvar consulta
         </button>
 
 
@@ -663,7 +1638,7 @@
           class="btn-alta"
           onclick="abrirModalAlta()"
         >
-          🏠 Dar Alta
+          Dar Alta
         </button>
 
 
@@ -671,21 +1646,24 @@
           class="btn-pdf"
           onclick="gerarPDF()"
         >
-          📄 Gerar PDF
+          Gerar PDF
         </button>
 
       </div>
 
     </div>
 
+
   </div>
+
 
 </div>
 
 
-<!-- =========================================================
+
+<!-- =====================================================
      MODAL — DAR ALTA
-     ========================================================= -->
+====================================================== -->
 
 <div
   id="modal-alta"
@@ -695,17 +1673,19 @@
   <div class="modal-conteudo">
 
     <h3>
-      🏠 Dar Alta do Paciente
+      Dar Alta do Paciente
     </h3>
 
     <p>
       Informe o motivo da alta:
     </p>
 
+
     <textarea
       id="motivo-alta"
       placeholder="Exemplo: Paciente liberado após avaliação médica."
     ></textarea>
+
 
     <div class="modal-acoes">
 
@@ -715,6 +1695,7 @@
       >
         Cancelar
       </button>
+
 
       <button
         class="btn-alta"
@@ -730,12 +1711,13 @@
 </div>
 
 
+
 <script>
 
 
-/* =========================================================
+/* =====================================================
    VARIÁVEIS
-   ========================================================= */
+====================================================== */
 
 let triagensCarregadas = [];
 
@@ -746,9 +1728,48 @@ let motivoAlta = "";
 let pacienteEmAlta = false;
 
 
-/* =========================================================
+
+/* =====================================================
+   ESCAPAR HTML
+====================================================== */
+
+function escaparHTML(texto) {
+
+  return String(texto)
+
+    .replace(/&/g, "&amp;")
+
+    .replace(/</g, "&lt;")
+
+    .replace(/>/g, "&gt;")
+
+    .replace(/"/g, "&quot;")
+
+    .replace(/'/g, "&#039;");
+}
+
+
+
+/* =====================================================
+   ESCAPAR TEXTO
+====================================================== */
+
+function escaparTexto(texto) {
+
+  return String(texto)
+
+    .replace(/\\/g, "\\\\")
+
+    .replace(/'/g, "\\'")
+
+    .replace(/"/g, '\\"');
+}
+
+
+
+/* =====================================================
    CARREGAR TRIAGENS
-   ========================================================= */
+====================================================== */
 
 function carregar() {
 
@@ -763,67 +1784,163 @@ function carregar() {
       const div =
         document.getElementById("triagens");
 
+
       div.innerHTML = "";
 
 
+      /* FILA VAZIA */
+
       if (data.length === 0) {
 
-        div.innerHTML =
-          "<p style='color:#888; text-align:center;'>Nenhum paciente na fila.</p>";
+        div.innerHTML = `
+          <div class="fila-vazia">
+            Nenhum paciente aguardando atendimento.
+          </div>
+        `;
 
         return;
       }
 
 
+      /* CRIA OS CARDS */
+
       data.forEach((t, index) => {
+
+
+        let riscoClasse = "";
+
+        const risco =
+          String(t.risco || "").toLowerCase();
+
+
+        if (risco.includes("verde")) {
+
+          riscoClasse = "verde";
+
+        }
+
+        else if (risco.includes("amarelo")) {
+
+          riscoClasse = "amarelo";
+
+        }
+
+        else if (risco.includes("vermelho")) {
+
+          riscoClasse = "vermelho";
+
+        }
+
 
         div.innerHTML += `
 
           <div class="card">
 
-            <h3>
-              ${escaparHTML(t.nome)}
-            </h3>
 
-            <p>
-              <b>Sintoma:</b>
-              ${escaparHTML(t.sintoma || "Não informado")}
-            </p>
+            <div class="card-topo">
 
-            <p>
-              <b>Temperatura:</b>
-              ${escaparHTML(t.temperatura || "Não informada")}°C
-            </p>
+              <h3>
+                ${escaparHTML(t.nome || "Paciente")}
+              </h3>
 
-            <p>
-              <span class="${escaparHTML(t.risco || "")}">
+              <span class="risco ${riscoClasse}">
                 ${escaparHTML(t.risco || "Não informado")}
               </span>
-            </p>
 
-            <p>
-              <b>Alergia:</b>
-              ${escaparHTML(t.alergia || "Nenhuma")}
-            </p>
+            </div>
 
-            <p>
-              <b>Observação:</b>
-              ${escaparHTML(t.observacao || "Nenhuma")}
-            </p>
 
-            <div
-              style="
-                display:flex;
-                gap:8px;
-                flex-wrap:wrap;
-              "
-            >
+            <div class="dados-paciente">
+
+
+              <div class="info-paciente">
+
+                <strong>
+                  Sintoma
+                </strong>
+
+                <span>
+                  ${escaparHTML(
+                    t.sintoma || "Não informado"
+                  )}
+                </span>
+
+              </div>
+
+
+              <div class="info-paciente">
+
+                <strong>
+                  Temperatura
+                </strong>
+
+                <span>
+                  ${
+                    t.temperatura
+                      ? escaparHTML(t.temperatura) + "°C"
+                      : "Não informada"
+                  }
+                </span>
+
+              </div>
+
+
+              <div class="info-paciente">
+
+                <strong>
+                  Alergia
+                </strong>
+
+                <span>
+                  ${escaparHTML(
+                    t.alergia || "Nenhuma"
+                  )}
+                </span>
+
+              </div>
+
+
+              <div class="info-paciente">
+
+                <strong>
+                  Observação
+                </strong>
+
+                <span>
+                  ${escaparHTML(
+                    t.observacao || "Nenhuma"
+                  )}
+                </span>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="observacao-card">
+
+              <strong>
+                Observação:
+              </strong>
+
+              ${escaparHTML(
+                t.observacao || "Nenhuma"
+              )}
+
+            </div>
+
+
+            <div class="acoes-paciente">
+
 
               <button
+                class="btn-atender"
                 onclick="selecionar(${index})"
               >
                 Atender
               </button>
+
 
               <button
                 class="btn-tv"
@@ -832,7 +1949,9 @@ function carregar() {
                 📺 Chamar na TV
               </button>
 
+
             </div>
+
 
           </div>
 
@@ -854,9 +1973,10 @@ function carregar() {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    ATENDER PACIENTE
-   ========================================================= */
+====================================================== */
 
 function selecionar(index) {
 
@@ -881,66 +2001,90 @@ function selecionar(index) {
   pacienteEmAlta = false;
 
 
-  /* -----------------------------------------
-     Preenche os dados
-     ----------------------------------------- */
+  /* PACIENTE */
 
-  document.getElementById("paciente").value =
+  document.getElementById(
+    "paciente"
+  ).value =
     t.nome || "";
 
 
-  document.getElementById("consulta-paciente-nome").textContent =
+  document.getElementById(
+    "consulta-paciente-nome"
+  ).textContent =
     t.nome || "Paciente";
 
 
-  document.getElementById("consulta-sintoma").textContent =
+  /* SINTOMA */
+
+  document.getElementById(
+    "consulta-sintoma"
+  ).textContent =
     t.sintoma || "Não informado";
 
 
-  document.getElementById("consulta-temperatura").textContent =
+  /* TEMPERATURA */
+
+  document.getElementById(
+    "consulta-temperatura"
+  ).textContent =
     t.temperatura
       ? t.temperatura + "°C"
       : "Não informada";
 
 
-  document.getElementById("consulta-risco").textContent =
+  /* RISCO */
+
+  document.getElementById(
+    "consulta-risco"
+  ).textContent =
     t.risco || "Não informado";
 
 
-  document.getElementById("consulta-alergia").textContent =
+  /* ALERGIA */
+
+  document.getElementById(
+    "consulta-alergia"
+  ).textContent =
     t.alergia || "Nenhuma";
 
 
-  document.getElementById("consulta-observacao-triagem").textContent =
+  /* OBSERVAÇÃO */
+
+  document.getElementById(
+    "consulta-observacao-triagem"
+  ).textContent =
     t.observacao || "Nenhuma";
 
 
-  /* -----------------------------------------
-     Observação inicial
-     ----------------------------------------- */
+  /* OBSERVAÇÃO DA CONSULTA */
 
-  document.getElementById("obs").value =
+  document.getElementById(
+    "obs"
+  ).value =
     t.observacao || "";
 
 
-  /* -----------------------------------------
-     Limpa diagnóstico
-     ----------------------------------------- */
+  /* LIMPAR DIAGNÓSTICO */
 
-  document.getElementById("diagnostico").value =
-    "";
-
-
-  document.getElementById("medicacao").value =
-    "";
+  document.getElementById(
+    "diagnostico"
+  ).value = "";
 
 
-  /* -----------------------------------------
-     Alerta de alergia
-     ----------------------------------------- */
+  /* LIMPAR MEDICAÇÃO */
+
+  document.getElementById(
+    "medicacao"
+  ).value = "";
+
+
+  /* ALERTA DE ALERGIA */
 
   const alerta =
-    document.getElementById("alerta-alergia");
+    document.getElementById(
+      "alerta-alergia"
+    );
 
 
   if (
@@ -963,29 +2107,24 @@ function selecionar(index) {
   }
 
 
-  /* -----------------------------------------
-     Limpa status
-     ----------------------------------------- */
+  /* STATUS */
 
-  document.getElementById("status-consulta").style.display =
-    "none";
-
-
-  /* -----------------------------------------
-     TROCA DE TELA
-     ----------------------------------------- */
-
-  document.getElementById("tela-painel").style.display =
-    "none";
+  document.getElementById(
+    "status-consulta"
+  ).style.display = "none";
 
 
-  document.getElementById("tela-consulta").style.display =
-    "block";
+  /* TROCA DE TELA */
+
+  document.getElementById(
+    "tela-painel"
+  ).style.display = "none";
 
 
-  /* -----------------------------------------
-     Rola para o topo
-     ----------------------------------------- */
+  document.getElementById(
+    "tela-consulta"
+  ).style.display = "block";
+
 
   window.scrollTo({
     top: 0,
@@ -993,9 +2132,7 @@ function selecionar(index) {
   });
 
 
-  /* -----------------------------------------
-     Alerta adicional
-     ----------------------------------------- */
+  /* ALERTA ORIGINAL */
 
   if (
     t.alergia &&
@@ -1012,18 +2149,21 @@ function selecionar(index) {
 }
 
 
-/* =========================================================
-   VOLTAR PARA A FILA
-   ========================================================= */
+
+/* =====================================================
+   VOLTAR PARA FILA
+====================================================== */
 
 function voltarParaFila() {
 
-  document.getElementById("tela-consulta").style.display =
-    "none";
+  document.getElementById(
+    "tela-consulta"
+  ).style.display = "none";
 
 
-  document.getElementById("tela-painel").style.display =
-    "block";
+  document.getElementById(
+    "tela-painel"
+  ).style.display = "block";
 
 
   window.scrollTo({
@@ -1034,16 +2174,17 @@ function voltarParaFila() {
 }
 
 
-/* =========================================================
-   CHAMAR NA TV
-   ========================================================= */
 
-// Função criada para enviar o nome do paciente para a TV quando ele for chamado no consultório.
+/* =====================================================
+   CHAMAR NA TV
+====================================================== */
+
 function chamarNaTV(nome) {
 
   const consultorio =
-    document.getElementById("consultorio-num").value ||
-    "01";
+    document.getElementById(
+      "consultorio-num"
+    ).value || "01";
 
 
   fetch("/tv/chamar", {
@@ -1096,9 +2237,10 @@ function chamarNaTV(nome) {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    CARREGAR MEDICAÇÕES
-   ========================================================= */
+====================================================== */
 
 function carregarMedicacoes() {
 
@@ -1119,11 +2261,6 @@ function carregarMedicacoes() {
         error
       );
 
-      /*
-        Caso a API não esteja disponível,
-        são mostrados exemplos.
-      */
-
       preencherMedicacoes([]);
 
     });
@@ -1131,20 +2268,25 @@ function carregarMedicacoes() {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    PREENCHER MEDICAÇÕES
-   ========================================================= */
+====================================================== */
 
 function preencherMedicacoes(data) {
 
   const select =
-    document.getElementById("medicacao");
+    document.getElementById(
+      "medicacao"
+    );
 
 
   select.innerHTML = `
+
     <option value="">
       Selecione a medicação
     </option>
+
   `;
 
 
@@ -1156,11 +2298,15 @@ function preencherMedicacoes(data) {
     data.forEach(med => {
 
       const option =
-        document.createElement("option");
+        document.createElement(
+          "option"
+        );
+
 
       option.value = med;
 
       option.textContent = med;
+
 
       select.appendChild(option);
 
@@ -1171,8 +2317,9 @@ function preencherMedicacoes(data) {
   else {
 
     /*
-      Exemplos apenas para demonstração
-      da interface.
+      Exemplos mantidos do seu arquivo.
+      Eles aparecem somente se a API
+      não retornar medicamentos.
     */
 
     const exemplos = [
@@ -1197,11 +2344,15 @@ function preencherMedicacoes(data) {
     exemplos.forEach(med => {
 
       const option =
-        document.createElement("option");
+        document.createElement(
+          "option"
+        );
+
 
       option.value = med;
 
       option.textContent = med;
+
 
       select.appendChild(option);
 
@@ -1212,26 +2363,35 @@ function preencherMedicacoes(data) {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    SALVAR CONSULTA
-   ========================================================= */
+====================================================== */
 
 function salvar() {
 
   const paciente =
-    document.getElementById("paciente").value;
+    document.getElementById(
+      "paciente"
+    ).value;
 
 
   const diagnostico =
-    document.getElementById("diagnostico").value.trim();
+    document.getElementById(
+      "diagnostico"
+    ).value.trim();
 
 
   const medicacao =
-    document.getElementById("medicacao").value;
+    document.getElementById(
+      "medicacao"
+    ).value;
 
 
   const obs =
-    document.getElementById("obs").value.trim();
+    document.getElementById(
+      "obs"
+    ).value.trim();
 
 
   if (!paciente) {
@@ -1250,7 +2410,9 @@ function salvar() {
       "Informe o diagnóstico."
     );
 
-    document.getElementById("diagnostico").focus();
+    document.getElementById(
+      "diagnostico"
+    ).focus();
 
     return;
   }
@@ -1262,7 +2424,9 @@ function salvar() {
       "Selecione uma medicação."
     );
 
-    document.getElementById("medicacao").focus();
+    document.getElementById(
+      "medicacao"
+    ).focus();
 
     return;
   }
@@ -1279,8 +2443,11 @@ function salvar() {
     body: JSON.stringify({
 
       paciente,
+
       diagnostico,
+
       medicacao,
+
       obs
 
     })
@@ -1294,6 +2461,7 @@ function salvar() {
     mostrarStatus(
       "✅ Consulta salva com sucesso!"
     );
+
 
     alert(
       "Consulta salva com sucesso!"
@@ -1317,14 +2485,17 @@ function salvar() {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    STATUS
-   ========================================================= */
+====================================================== */
 
 function mostrarStatus(mensagem) {
 
   const status =
-    document.getElementById("status-consulta");
+    document.getElementById(
+      "status-consulta"
+    );
 
 
   status.textContent =
@@ -1337,14 +2508,17 @@ function mostrarStatus(mensagem) {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    ABRIR MODAL DE ALTA
-   ========================================================= */
+====================================================== */
 
 function abrirModalAlta() {
 
   const paciente =
-    document.getElementById("paciente").value;
+    document.getElementById(
+      "paciente"
+    ).value;
 
 
   if (!paciente) {
@@ -1358,7 +2532,9 @@ function abrirModalAlta() {
 
 
   const diagnostico =
-    document.getElementById("diagnostico").value.trim();
+    document.getElementById(
+      "diagnostico"
+    ).value.trim();
 
 
   if (!diagnostico) {
@@ -1367,37 +2543,44 @@ function abrirModalAlta() {
       "Informe o diagnóstico antes de dar alta."
     );
 
-    document.getElementById("diagnostico").focus();
+    document.getElementById(
+      "diagnostico"
+    ).focus();
 
     return;
   }
 
 
-  document.getElementById("motivo-alta").value =
-    "";
+  document.getElementById(
+    "motivo-alta"
+  ).value = "";
 
 
-  document.getElementById("modal-alta").style.display =
-    "flex";
+  document.getElementById(
+    "modal-alta"
+  ).style.display = "flex";
 
 }
 
 
-/* =========================================================
+
+/* =====================================================
    FECHAR MODAL
-   ========================================================= */
+====================================================== */
 
 function fecharModalAlta() {
 
-  document.getElementById("modal-alta").style.display =
-    "none";
+  document.getElementById(
+    "modal-alta"
+  ).style.display = "none";
 
 }
 
 
-/* =========================================================
+
+/* =====================================================
    CONFIRMAR ALTA
-   ========================================================= */
+====================================================== */
 
 function confirmarAlta() {
 
@@ -1446,14 +2629,17 @@ function confirmarAlta() {
 }
 
 
-/* =========================================================
+
+/* =====================================================
    GERAR PDF
-   ========================================================= */
+====================================================== */
 
 function gerarPDF() {
 
   const paciente =
-    document.getElementById("paciente").value;
+    document.getElementById(
+      "paciente"
+    ).value;
 
 
   if (!paciente) {
@@ -1467,37 +2653,51 @@ function gerarPDF() {
 
 
   const diagnostico =
-    document.getElementById("diagnostico").value ||
+    document.getElementById(
+      "diagnostico"
+    ).value ||
     "Não informado";
 
 
   const medicacao =
-    document.getElementById("medicacao").value ||
+    document.getElementById(
+      "medicacao"
+    ).value ||
     "Não informada";
 
 
   const obs =
-    document.getElementById("obs").value ||
+    document.getElementById(
+      "obs"
+    ).value ||
     "Nenhuma";
 
 
   const sintoma =
-    document.getElementById("consulta-sintoma").textContent ||
+    document.getElementById(
+      "consulta-sintoma"
+    ).textContent ||
     "Não informado";
 
 
   const temperatura =
-    document.getElementById("consulta-temperatura").textContent ||
+    document.getElementById(
+      "consulta-temperatura"
+    ).textContent ||
     "Não informada";
 
 
   const risco =
-    document.getElementById("consulta-risco").textContent ||
+    document.getElementById(
+      "consulta-risco"
+    ).textContent ||
     "Não informado";
 
 
   const alergia =
-    document.getElementById("consulta-alergia").textContent ||
+    document.getElementById(
+      "consulta-alergia"
+    ).textContent ||
     "Nenhuma";
 
 
@@ -1535,7 +2735,7 @@ function gerarPDF() {
 
     <!DOCTYPE html>
 
-    <html>
+    <html lang="pt-BR">
 
     <head>
 
@@ -1548,71 +2748,158 @@ function gerarPDF() {
 
       <style>
 
+        * {
+          box-sizing: border-box;
+        }
+
         body {
-          font-family: Arial, sans-serif;
-          color: #222;
+
+          font-family:
+            Arial,
+            sans-serif;
+
+          color: #263746;
+
           margin: 40px;
-          line-height: 1.5;
+
+          line-height: 1.6;
+
         }
 
         .cabecalho {
+
           text-align: center;
-          border-bottom: 2px solid #333;
-          padding-bottom: 15px;
-          margin-bottom: 25px;
+
+          border-bottom:
+            2px solid #0b2239;
+
+          padding-bottom: 18px;
+
+          margin-bottom: 30px;
+
         }
 
         .cabecalho h1 {
+
           margin: 0;
-          font-size: 24px;
+
+          color: #0b2239;
+
+          font-size: 25px;
+
         }
 
         .cabecalho p {
-          color: #666;
+
+          color: #71818d;
+
+          font-size: 12px;
+
         }
 
         .secao {
-          margin-bottom: 22px;
+
+          margin-bottom: 25px;
+
         }
 
         .secao h2 {
+
           font-size: 17px;
-          background: #f0f0f0;
-          padding: 8px;
-          border-left: 4px solid #007bff;
+
+          color: #0b2239;
+
+          background: #eef3f5;
+
+          padding: 9px 12px;
+
+          border-left:
+            4px solid #0b2239;
+
+          margin-bottom: 13px;
+
         }
 
         .campo {
-          margin: 8px 0;
+
+          margin: 9px 0;
+
         }
 
         .campo strong {
+
           display: inline-block;
-          min-width: 170px;
+
+          min-width: 175px;
+
+          color: #526571;
+
         }
 
         .observacao {
+
           white-space: pre-wrap;
-          background: #fafafa;
-          border: 1px solid #ddd;
-          padding: 12px;
-          border-radius: 5px;
+
+          background: #f8fafb;
+
+          border: 1px solid #dbe3e8;
+
+          padding: 13px;
+
+          border-radius: 7px;
+
         }
 
         .alta {
-          background: #fff3cd;
-          border: 1px solid #ffeeba;
-          padding: 12px;
-          border-radius: 5px;
+
+          background: #f8eeee;
+
+          border: 1px solid #e4c7c4;
+
+          padding: 13px;
+
+          border-radius: 7px;
+
         }
 
         .rodape {
+
           margin-top: 50px;
+
           padding-top: 15px;
-          border-top: 1px solid #ccc;
+
+          border-top: 1px solid #dbe3e8;
+
           text-align: center;
-          color: #777;
-          font-size: 12px;
+
+          color: #7b8991;
+
+          font-size: 11px;
+
+        }
+
+        .nao-imprimir {
+
+          text-align: center;
+
+          margin-top: 30px;
+
+        }
+
+        .nao-imprimir button {
+
+          background: #0b2239;
+
+          color: white;
+
+          border: none;
+
+          padding: 11px 20px;
+
+          border-radius: 6px;
+
+          cursor: pointer;
+
         }
 
         @media print {
@@ -1638,7 +2925,7 @@ function gerarPDF() {
       <div class="cabecalho">
 
         <h1>
-          🩺 Relatório da Consulta Médica
+          Relatório da Consulta Médica
         </h1>
 
         <p>
@@ -1649,11 +2936,13 @@ function gerarPDF() {
       </div>
 
 
+
       <div class="secao">
 
         <h2>
           Dados do Paciente
         </h2>
+
 
         <div class="campo">
 
@@ -1723,6 +3012,7 @@ function gerarPDF() {
       </div>
 
 
+
       <div class="secao">
 
         <h2>
@@ -1754,6 +3044,7 @@ function gerarPDF() {
       </div>
 
 
+
       <div class="secao">
 
         <h2>
@@ -1767,6 +3058,7 @@ function gerarPDF() {
         </div>
 
       </div>
+
 
 
       <div class="secao">
@@ -1790,6 +3082,7 @@ function gerarPDF() {
       </div>
 
 
+
       <div class="rodape">
 
         Relatório gerado pelo Painel Médico.
@@ -1797,25 +3090,10 @@ function gerarPDF() {
       </div>
 
 
-      <div
-        class="nao-imprimir"
-        style="
-          text-align:center;
-          margin-top:30px;
-        "
-      >
 
-        <button
-          onclick="window.print()"
-          style="
-            background:#007bff;
-            color:white;
-            border:none;
-            padding:10px 20px;
-            border-radius:5px;
-            cursor:pointer;
-          "
-        >
+      <div class="nao-imprimir">
+
+        <button onclick="window.print()">
 
           🖨️ Imprimir / Salvar como PDF
 
@@ -1836,57 +3114,24 @@ function gerarPDF() {
 }
 
 
-/* =========================================================
-   ESCAPAR HTML
-   ========================================================= */
 
-function escaparHTML(texto) {
-
-  return String(texto)
-
-    .replace(/&/g, "&amp;")
-
-    .replace(/</g, "&lt;")
-
-    .replace(/>/g, "&gt;")
-
-    .replace(/"/g, "&quot;")
-
-    .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   ESCAPAR TEXTO PARA ONCLICK
-   ========================================================= */
-
-function escaparTexto(texto) {
-
-  return String(texto)
-
-    .replace(/\\/g, "\\\\")
-
-    .replace(/'/g, "\\'")
-
-    .replace(/"/g, '\\"');
-
-}
-
-
-/* =========================================================
+/* =====================================================
    FECHAR MODAL CLICANDO FORA
-   ========================================================= */
+====================================================== */
 
 window.addEventListener(
   "click",
   function(event) {
 
     const modal =
-      document.getElementById("modal-alta");
+      document.getElementById(
+        "modal-alta"
+      );
 
 
-    if (event.target === modal) {
+    if (
+      event.target === modal
+    ) {
 
       fecharModalAlta();
 
@@ -1896,9 +3141,10 @@ window.addEventListener(
 );
 
 
-/* =========================================================
+
+/* =====================================================
    INICIALIZAÇÃO
-   ========================================================= */
+====================================================== */
 
 carregar();
 
@@ -1916,6 +3162,7 @@ setInterval(
 );
 
 </script>
+
 
 </body>
 
